@@ -1,1 +1,11 @@
-pdfs/
+# Virtual environment hidden (replicate with uv sync)
+.venv/
+
+# Environment file hidden
+.env
+
+# Data directory hidden
+data/
+
+# Others
+__pycache__/
