@@ -13,4 +13,5 @@ dependencies = [
     "pymupdf>=1.25.2",
     "python-dotenv>=1.0.1",
     "typer>=0.15.1",
+    "wikipedia>=1.4.0",
 ]

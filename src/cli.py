@@ -5,6 +5,7 @@ from src.config import PROCESSED_DIR
 from src.keyword_extraction import extract_keywords
 from src.pdf_to_docs import create_documents
 from src.visualize import visualize_page
+from src.wikipedia import store_wikipedia_content
 
 logger = logging.getLogger(__name__)
 cli = typer.Typer()
@@ -74,6 +75,22 @@ def extract_topics(
         typer.echo(f"Error: Could not find file {input_file}")
     except Exception as e:
         typer.echo(f"Error extracting topics: {str(e)}")
+
+
+@cli.command()
+def fetch_wiki(
+    topics_file: str = typer.Option(
+        ..., "--topics-file", help="Name of topics JSON file"
+    ),
+    subject: str = typer.Option(..., "--subject", help="Subject name"),
+    form: int = typer.Option(..., "--form", help="Form number (1-6)"),
+) -> None:
+    """Fetch Wikipedia content for curriculum topics"""
+    try:
+        store_wikipedia_content(topics_file, subject, form)
+        typer.echo("Successfully fetched Wikipedia content")
+    except Exception as e:
+        typer.echo(f"Error fetching Wikipedia content: {str(e)}")
 
 
 if __name__ == "__main__":
