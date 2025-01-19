@@ -25,7 +25,7 @@ def locate_form_pages(form: int, json_name: str) -> List[int]:
         docs = json.load(f)
 
     # Convert form number to text representation
-    form_texts = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six"}
+    form_texts = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "V", 6: "VI"}
     form_text = form_texts[form]
 
     pages = []
@@ -36,7 +36,7 @@ def locate_form_pages(form: int, json_name: str) -> List[int]:
         text = doc["page_content"].strip()
 
         # Look for form indicators or bibliography at the start of text
-        form_match = re.match(r"^Form\s+(One|Two|Three|Four|Five|Six)", text)
+        form_match = re.match(r"^Form\s+(One|Two|Three|Four|VI|V)", text)
         biblio_match = re.match(r"^Bibliograph[y|ies]", text)
 
         if form_match:
