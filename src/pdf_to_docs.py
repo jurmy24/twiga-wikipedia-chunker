@@ -34,12 +34,3 @@ def create_documents(file_name: str) -> List[Document]:
         json.dump(docs_dict, f, ensure_ascii=False, indent=2)
 
     return docs
-
-
-# for doc in loader.lazy_load():
-#     docs.append(doc)
-#     doc_dict = {"page_content": doc.page_content, "metadata": doc.metadata}
-#     docs_dict.append(doc_dict)
-
-# with open(output_path, "w", encoding="utf-8") as f:
-#     json.dump(docs_dict, f, ensure_ascii=False, indent=2)
