@@ -5,6 +5,7 @@ description = "Convert a syllabus into chunks from Wikipedia articles"
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
+    "langchain-openai>=0.3.0",
     "langchain-unstructured>=0.1.6",
     "langchain>=0.3.14",
     "matplotlib>=3.10.0",

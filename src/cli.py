@@ -1,6 +1,8 @@
 import typer
 import logging
 
+from src.config import PROCESSED_DIR
+from src.keyword_extraction import extract_keywords
 from src.pdf_to_docs import create_documents
 from src.visualize import visualize_page
 
@@ -44,6 +46,34 @@ def visualize(
         )
     except Exception as e:
         typer.echo(f"Error visualizing page: {str(e)}")
+
+
+@cli.command()
+def extract_topics(
+    input_file: str = typer.Option(
+        ..., "--input-file", help="Name of processed JSON file"
+    ),
+    form: int = typer.Option(..., "--form", help="Form number (1-6)"),
+    subject: str = typer.Option(
+        ..., "--subject", help="Subject name (e.g., 'Geography', 'Biology')"
+    ),
+) -> None:
+    """Extract key topics from curriculum for a specific form"""
+    try:
+        typer.echo(f"Extracting topics for Form {form} {subject}...")
+        keywords = extract_keywords(form, input_file, subject)
+        typer.echo(f"\nExtracted {len(keywords)} topics:")
+        for keyword in keywords:
+            typer.echo(f"  • {keyword}")
+        typer.echo(
+            f"\nTopics saved to: {PROCESSED_DIR}/topics/{subject}_form_{form}_topics.json"
+        )
+    except ValueError as e:
+        typer.echo(f"Error: {str(e)}")
+    except FileNotFoundError:
+        typer.echo(f"Error: Could not find file {input_file}")
+    except Exception as e:
+        typer.echo(f"Error extracting topics: {str(e)}")
 
 
 if __name__ == "__main__":
