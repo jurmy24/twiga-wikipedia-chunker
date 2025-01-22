@@ -681,6 +681,21 @@ wheels = [
 ]
 
 [[package]]
+name = "langchain-together"
+version = "0.3.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "aiohttp" },
+    { name = "langchain-core" },
+    { name = "langchain-openai" },
+    { name = "requests" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/24/c4/64b92524121eaf4e805ade7ea68e71d52eab5e8fdad9b6b8e62f5a99eff4/langchain_together-0.3.0.tar.gz", hash = "sha256:c8a96377e49c065526435f766c6e1c7da3f7d054361326f079de8bd368ea76f2", size = 10247 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a8/69/b3cbcf5b43acbc098c012ef75035fb0dc1e0f227f5161329ef9884a25ba4/langchain_together-0.3.0-py3-none-any.whl", hash = "sha256:4dcb4f6858c910c23d2268da1ed5f54e8cd01224ecf086dc7a8adbacdc6cb686", size = 12338 },
+]
+
+[[package]]
 name = "langchain-unstructured"
 version = "0.1.6"
 source = { registry = "https://pypi.org/simple" }
@@ -1347,6 +1362,15 @@ wheels = [
 ]
 
 [[package]]
+name = "sseclient-py"
+version = "1.7.2"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/7d/1f/29688479e7e57a4cd847ded630be27b3a96f64b379e7f0136f64020f6308/sseclient-py-1.7.2.tar.gz", hash = "sha256:ba3197d314766eccb72a1dda80b5fa14a0fbba07d796a287654c07edde88fe0f", size = 7709 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/74/67/482889996a8a12767ca402e50e6abe1ecde497e7b2d3425b3ac452050a7c/sseclient_py-1.7.2-py2.py3-none-any.whl", hash = "sha256:a758653b13b78df42cdb696740635a26cb72ad433b75efb68dbbb163d099b6a9", size = 8377 },
+]
+
+[[package]]
 name = "sympy"
 version = "1.13.3"
 source = { registry = "https://pypi.org/simple" }
@@ -1392,6 +1416,21 @@ wheels = [
 ]
 
 [[package]]
+name = "together"
+version = "0.2.4"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "requests" },
+    { name = "sseclient-py" },
+    { name = "tqdm" },
+    { name = "typer" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/fc/4a/695ab90fadd752d7136de71dd9522a4b6186a3436c34a7cf34fabda828b4/together-0.2.4.tar.gz", hash = "sha256:85896985f41bcd6f308ac4d925d1827e915d1e5e65057f92e990610a3085c94a", size = 51214 }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/6e/6f/be0d727e32573ce9d240477b02d4e8f37709b73f1cd2f68ec74bf2fb0e8e/together-0.2.4-py3-none-any.whl", hash = "sha256:fdf5b70e2d517e855fae5821e1ef8f164e938710d662fe3f4fadf5ac39f1c2a3", size = 53494 },
+]
+
+[[package]]
 name = "tqdm"
 version = "4.67.1"
 source = { registry = "https://pypi.org/simple" }
@@ -1410,11 +1449,13 @@ source = { virtual = "." }
 dependencies = [
     { name = "langchain" },
     { name = "langchain-openai" },
+    { name = "langchain-together" },
     { name = "langchain-unstructured" },
     { name = "matplotlib" },
     { name = "pillow" },
     { name = "pymupdf" },
     { name = "python-dotenv" },
+    { name = "together" },
     { name = "typer" },
     { name = "wikipedia" },
 ]
@@ -1423,11 +1464,13 @@ dependencies = [
 requires-dist = [
     { name = "langchain", specifier = ">=0.3.14" },
     { name = "langchain-openai", specifier = ">=0.3.0" },
+    { name = "langchain-together", specifier = ">=0.3.0" },
     { name = "langchain-unstructured", specifier = ">=0.1.6" },
     { name = "matplotlib", specifier = ">=3.10.0" },
     { name = "pillow", specifier = ">=11.1.0" },
     { name = "pymupdf", specifier = ">=1.25.2" },
     { name = "python-dotenv", specifier = ">=1.0.1" },
+    { name = "together", specifier = ">=0.2.4" },
     { name = "typer", specifier = ">=0.15.1" },
     { name = "wikipedia", specifier = ">=1.4.0" },
 ]

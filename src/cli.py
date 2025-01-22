@@ -6,6 +6,7 @@ from src.keyword_extraction import extract_keywords
 from src.pdf_to_docs import create_documents
 from src.visualize import visualize_page
 from src.wikipedia import store_wikipedia_content
+from src.chunk import chunk_articles
 
 logger = logging.getLogger(__name__)
 cli = typer.Typer()
@@ -91,6 +92,22 @@ def fetch_wiki(
         typer.echo("Successfully fetched Wikipedia content")
     except Exception as e:
         typer.echo(f"Error fetching Wikipedia content: {str(e)}")
+
+
+@cli.command()
+def chunk_wiki(
+    input_file: str = typer.Option(
+        ..., "--input-file", help="Name of Wikipedia content JSON file"
+    )
+) -> None:
+    """Chunk Wikipedia articles into smaller segments"""
+    try:
+        chunk_articles(input_file)
+        typer.echo("Successfully chunked Wikipedia articles")
+    except FileNotFoundError:
+        typer.echo(f"Error: Could not find input file {input_file}")
+    except Exception as e:
+        typer.echo(f"Error chunking Wikipedia articles: {str(e)}")
 
 
 if __name__ == "__main__":
